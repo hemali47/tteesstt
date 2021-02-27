@@ -11,12 +11,6 @@
     ],
     "minimum-stability": "dev",
     "require": {},
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/hemali47/tteesstt"
-        }
-    ],
     "autoload": {
         "psr-4":
         {
