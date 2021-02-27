@@ -3,6 +3,8 @@
 namespace Testing\TestContact;
 
 use Illuminate\Support\ServiceProvider;
+use Courier\Console\Commands\InstallCommand;
+use Courier\Console\Commands\NetworkCommand;
 
 class ContactServiceProvider extends ServiceProvider
 {
@@ -18,7 +20,12 @@ class ContactServiceProvider extends ServiceProvider
             __DIR__.'/config/contact.php' => config_path('contact.php'),
         ]);
         $this->loadTranslationsFrom(__DIR__.'/vendor', 'contact');
-
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                InstallCommand::class,
+                NetworkCommand::class,
+            ]);
+        }
     }
 
     public function register()
